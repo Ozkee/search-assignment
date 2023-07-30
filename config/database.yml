@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: cgtrader_development
+
+test:
+  <<: *default
+  database: cgtrader_test
+
+production:
+  <<: *default
+  database: cgtrader_production
+  username: cgtrader
+  password: <%= ENV["CGTRADER_DATABASE_PASSWORD"] %>
