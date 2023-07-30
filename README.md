@@ -6,6 +6,23 @@
 
 # Installation
 
+Install OpenSearch
+```shell
+brew install opensearch
+brew services start opensearch
+```
+
+Setup Project
+```shell
+bundle install
+rails db:create db:migrate
+```
+
+Install data
+```shell
+rails db:seed
+```
+
 # Problem statement
 Create an application that helps users find the most relevant prompts based on entered
 words

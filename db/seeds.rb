@@ -30,8 +30,14 @@ def get_prompts(offset = 0)
   puts "Inserted #{offset + insert_data.length} prompts."
 
   offset += 100
-  json_data['num_total_rows']
-  get_prompts(offset) if 400 > offset
+
+  if json_data['num_total_rows'] > offset
+    get_prompts(offset)
+  else
+    puts "All data inserted. Indexing prompts."
+    Prompt.reindex
+    puts "Prompts ready to be searched."
+  end
 end
 
 get_prompts

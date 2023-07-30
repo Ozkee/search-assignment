@@ -1,16 +1,29 @@
 <div class='container'>
+  <div class="mt-4">
+    <%= form_with url: root_path, method: :get, class: "row g-3" do |form| %>
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">
+          <%= form.label '👀', class: 'form-label', for: :search %>
+        </span>
+        <%= text_field_tag :search, params[:search], class: 'form-control', placeholder: 'Search for prompt..' %>
+        <%= form.submit 'Search', class: 'btn btn-primary' %>
+      </div>
+    <% end %>
 
-  <h1>
-    Prompts:
-  </h1>
+    <button type="button" class="btn btn-primary">
+      <%= @count_label %>
+      <span class="badge bg-secondary"><%= @pagy.count %></span>
+    </button>
 
-  <%- @prompts.each do |prompt| %>
-    <p>
-      <%= prompt.body %>
-    </p>
+    <%- @prompts.each do |prompt| %>
+      <p>
+        <%= prompt.body %>
+      </p>
 
-    <hr>
-  <% end %>
+      <hr>
+    <% end %>
 
-  <%= pagy_bootstrap_nav(@pagy).html_safe %>
+
+    <%= pagy_bootstrap_nav(@pagy).html_safe if @pagy.pages > 1 %>
+  </div>
 </div>
