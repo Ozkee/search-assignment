@@ -20,5 +20,4 @@ test:
   password: <%= ENV["POSTGRES_PASSWORD"] %>
 
 production:
-  <<: *default
   url: <%= ENV["DATABASE_URL"] %>
