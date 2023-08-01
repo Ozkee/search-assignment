@@ -4,7 +4,12 @@
 - Postgresql
 - elasticsearch 8.8.1
 
+# Demo
+[Demo is setup on Heroku](https://cgsearch-0c26eba1cc99.herokuapp.com/)
+
 # Installation
+
+## Local machine development
 
 Install OpenSearch
 ```shell
@@ -18,9 +23,22 @@ bundle install
 rails db:create db:migrate
 ```
 
-Install data
+Seed the data
 ```shell
 rails db:seed
+```
+
+## Docker development
+
+After having installed and working docker, go to the project folder and use:
+```shell
+docker-compose build
+docker-compose up
+```
+
+For getting data:
+```shell
+docker-compose run --rm cg-web bundle exec rails db:seed
 ```
 
 # Problem statement
